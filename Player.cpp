@@ -8,18 +8,18 @@ Player::Player(GameMechs* thisGMRef)
     myDir = STOP;
 
     // more actions to be included
-    playerPos = objPos(15, 7, '*');
+    playerPos = objPos(15, 7, '*');         //<-- Will change this 
 }
 
 
 Player::~Player()
 {
-    // delete any heap members here
+    // delete any heap members here         <-- Will change this 
 }
 
 objPos Player::getPlayerPos() const
 {
-    // return the reference to the playerPos array list
+    // return the reference to the playerPos array list <-- Will change this 
 }
 
 void Player::updatePlayerDir()

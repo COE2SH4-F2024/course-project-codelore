@@ -12,6 +12,7 @@ Food::~Food()
 }
 
 void Food::generateFood(Player* blockOff)
+//void Food::generateFood(objPosArrayList* blockOff) //<--Another change to make when you update player class
 {
     int randomX, randomY, i, bLength, bWidth;
     bool validPosition = false;
@@ -24,7 +25,7 @@ void Food::generateFood(Player* blockOff)
         randomX = (rand() % (bWidth - 2)) + 1;
         randomY = (rand() % (bLength - 2)) + 1; 
 
-        if (randomX == blockOff -> playX() && randomY == blockOff -> playY())
+        if (randomX == blockOff -> playX() && randomY == blockOff -> playY())  //<-- when you finish objPosArrayList, change this method
             {
                 validPosition = false;
             }

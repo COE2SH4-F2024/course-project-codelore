@@ -79,6 +79,7 @@ void RunLogic(void)
         game -> setExitTrue();
     }
 
+    // For Iteration 2B check
     snakeFood -> generateFood(snake);
 }
 
