@@ -1,12 +1,11 @@
 #include "objPosArrayList.h"
-#include <stdexcept>  // For exception handling
 
 // Check lecture contents on general purpose array list construction, 
 // and modify it to support objPos array list construction.
 
 objPosArrayList::objPosArrayList()
 {
-    arrayCapacity = 200;
+    arrayCapacity = ARRAY_MAX_CAP;
     listSize = 0;
     aList = new objPos[arrayCapacity];
 }
@@ -68,28 +67,19 @@ void objPosArrayList::removeTail()
 
 objPos objPosArrayList::getHeadElement() const
 {
-    if (listSize > 0) {
+    if (listSize > 0){
         return aList[0];
-    } else {
-        return objPos();  //Makes sure that an objPos value is returned bc that is the return type of the function
     }
 }
 
 objPos objPosArrayList::getTailElement() const
 {
-    if (listSize > 0) {
-        return aList[listSize - 1];
-    } else {
-        return objPos();
+    if (listSize > 0){
+        return aList[(listSize-1)];
     }
 }
 
 objPos objPosArrayList::getElement(int index) const
 {
-    if (index >= 0 && index < listSize) {
-        return aList[index];
-    } else {
-        return objPos();
-    }
-
+    return aList[index];
 }
