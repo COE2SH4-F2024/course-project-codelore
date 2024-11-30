@@ -66,14 +66,17 @@ void Player::updatePlayerDir()
             
             case 27:
                 mainGameMechsRef -> setExitTrue();
+                break;
             
             case 'L':
             case 'l':
                 mainGameMechsRef -> setLoseFlag();
+                break;
             
             case 'P':
             case 'p':
                 mainGameMechsRef -> incrementScore();
+                break;
 
             default:
                 break;

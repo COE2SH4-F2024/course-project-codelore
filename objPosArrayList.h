@@ -9,8 +9,8 @@ class objPosArrayList
 {
     private:
         objPos* aList;
-        int listSize;
-        int arrayCapacity;
+        int listSize;      //called sizeList in manual
+        int arrayCapacity; //called sizeArray in manual
 
     public:
         objPosArrayList();
