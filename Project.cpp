@@ -30,7 +30,7 @@ int main(void)
 
     Initialize();
 
-    while(!game -> getExitFlagStatus())  
+    while(!game -> getExitFlagStatus() && !game -> getLoseFlagStatus())  
     {
         GetInput();
         RunLogic();
@@ -69,6 +69,10 @@ void RunLogic(void)
     snake -> updatePlayerDir();
     snake -> movePlayer();
     game -> clearInput();
+    //For Testing
+    if ((game -> getScore()) > 10){
+        game -> setExitTrue();
+    }
 }
 
 void DrawScreen(void)
@@ -92,6 +96,8 @@ void DrawScreen(void)
     //Player Direction
     MacUILib_printf("Player Direction: %c\n", directionChar);
     MacUILib_printf("Player Position: x:%d, y:%d\n", playerX, playerY);
+    MacUILib_printf("Player Score: %d\n", game -> getScore());
+
 
     //Iteration 0, drawing the board
     for(y = 0; y < length; y++){
@@ -128,9 +134,9 @@ void CleanUp(void)
     }
 
     // Check if the player won based on the score
-    else if (game -> getScore() >= 10) 
+    else if (game -> getScore() > 10) 
     {
-        MacUILib_printf("Congratulations you win, here's a cookie, for tryharding.\nYour final score was %d.", game -> getScore());
+        MacUILib_printf("Congratulations you win, here's a cookie, tryhard.\nYour final score was %d.", game -> getScore());
     }
 
     // Check if the game ended early without losing or winning
