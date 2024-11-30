@@ -36,6 +36,8 @@ int main(void)
         RunLogic();
         DrawScreen();
         LoopDelay();
+        //For memory leak testing
+        //game -> setExitTrue();
     }
 
     CleanUp();

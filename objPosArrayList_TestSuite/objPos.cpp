@@ -21,7 +21,7 @@ objPos::objPos(int xPos, int yPos, char sym)
 
 // First special member function is the destructor.
 objPos::~objPos(){
-    delete pos; //Deallocates the pos memory from the heap
+    delete pos; //Deallocates the memory from the heap
 }
 
 //Next special function is the copy constructor
@@ -82,4 +82,33 @@ char objPos::getSymbolIfPosEqual(const objPos* refPos) const
         return symbol;
     else
         return 0;
+}
+
+// Additional Methods (only for iteration 1 and 2)
+
+int objPos:: getX(){
+    return pos->x;
+}
+
+    // Getter method for y
+int objPos:: getY() {
+    return pos->y;
+}
+
+void objPos:: setX(int xValue){
+    pos->x = xValue;
+}
+
+void objPos:: setY(int yValue){
+    pos->y = yValue;
+}
+
+void objPos::changeX(int direction)
+{
+    pos -> x += direction;
+}
+
+void objPos::changeY(int direction)
+{
+    pos -> y += direction;
 }
