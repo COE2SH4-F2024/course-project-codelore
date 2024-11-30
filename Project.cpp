@@ -3,6 +3,7 @@
 #include "objPos.h"
 #include "player.h"
 #include "GameMechs.h"
+#include "Food.h"
 
 using namespace std;
 
@@ -22,6 +23,7 @@ void CleanUp(void);
 //Global Scope
 GameMechs *game;   //Created a GameMech object with default board size
 Player *snake;     //Created the snake for game
+Food *snakeFood;
 //objPos *symbolTest;    //Check for iteration 1A
 
 
@@ -53,6 +55,7 @@ void Initialize(void)
     exitFlag = false;
     game = new GameMechs();
     snake = new Player(game);
+    snakeFood = new Food(game);
     //symbolTest = new objPos(15, 7, '*');
 
 }
@@ -75,6 +78,8 @@ void RunLogic(void)
     if ((game -> getScore()) > 10){
         game -> setExitTrue();
     }
+
+    snakeFood -> generateFood(snake);
 }
 
 void DrawScreen(void)
@@ -111,6 +116,11 @@ void DrawScreen(void)
             else if (x == playerX && y == playerY) {
                 MacUILib_printf("*");
             }
+            if (x == snakeFood -> getFoodPos().pos -> x && y == snakeFood -> getFoodPos().pos -> y)
+                {
+                    MacUILib_printf("@");
+                    continue;
+                }
             else{
                 MacUILib_printf(" ");
             }
@@ -150,5 +160,6 @@ void CleanUp(void)
     MacUILib_uninit();
     delete game;
     delete snake;
+    delete snakeFood;
     //delete symbolTest;
 }

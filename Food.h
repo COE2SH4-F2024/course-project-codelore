@@ -6,20 +6,23 @@
 #include "objPosArrayList.h"
 #include "stdlib.h"
 #include "time.h"
+#include "Player.h"
 
 class Food
 {
     private:
         objPos foodPos; //Tracks the position of food
 
-        GameMechs mainGameMechRef; // reference to main game mechanisms (if needed)
+        GameMechs* mainGameMechsRef; // reference to main game mechanisms (if needed)
 
     public:
-        Food();
+        Food(GameMechs* thisGMRef);
         ~Food();
 
-        void generateFood(objPos blockOff);
+        void generateFood(Player* blockOff);
         objPos getFoodPos() const;
 
 
-}
+};
+
+#endif

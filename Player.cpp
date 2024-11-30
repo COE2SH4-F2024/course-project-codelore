@@ -19,12 +19,12 @@ Player::~Player()
 
 objPos Player::getPlayerPos() const
 {
-    // return the reference to the playerPos arrray list
+    // return the reference to the playerPos array list
 }
 
 void Player::updatePlayerDir()
 {
-        // PPA3 input processing logic     
+    // PPA3 input processing logic     
     char input;
     input = mainGameMechsRef -> getInput();
 
@@ -161,11 +161,11 @@ char Player::getDirection() {
     }
 }
 
+//Getter Method for X and Y
 int Player:: playX(){
     return playerPos.getX();
 }
 
-    // Getter method for y
 int Player:: playY() {
     return playerPos.getY();
 }
