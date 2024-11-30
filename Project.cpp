@@ -115,6 +115,7 @@ void DrawScreen(void)
             }
             else if (x == playerX && y == playerY) {
                 MacUILib_printf("*");
+                continue;
             }
             if (x == snakeFood -> getFoodPos().pos -> x && y == snakeFood -> getFoodPos().pos -> y)
                 {
