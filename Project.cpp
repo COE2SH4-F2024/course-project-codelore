@@ -86,14 +86,18 @@ void RunLogic(void)
 void DrawScreen(void)
 {
     MacUILib_clearScreen();    
-    int x, y, i, length, width, playerX, playerY;
+    int x, y, i, length, width, playerX, playerY, size;
     char playerSymbol, directionChar;
     length = game -> getBoardSizeY();
     width = game -> getBoardSizeX();
     playerX = snake -> playX();
     playerY = snake -> playY();
     
+    bool isSnake = false;
+    objPosArrayList* player = snake -> getPlayerPos();
+
     directionChar = snake -> getDirection();
+    size = player->getSize();
 
     //Temporary variables
     //playerX = symbolTest -> getX();
@@ -103,7 +107,7 @@ void DrawScreen(void)
 
     //Player Direction
     MacUILib_printf("Player Direction: %c\n", directionChar);
-    MacUILib_printf("Player Position: x:%d, y:%d\n", playerX, playerY);
+    //MacUILib_printf("Player Position: x:%d, y:%d\n", playerX, playerY);
     MacUILib_printf("Player Score: %d\n", game -> getScore());
 
 
@@ -114,10 +118,15 @@ void DrawScreen(void)
                 MacUILib_printf("#");
                 continue;
             }
-            else if (x == playerX && y == playerY) {
-                MacUILib_printf("*");
-                continue;
+            isSnake = false;
+            for (i = 0; i < size; i++){
+                if (x == player->getElement(i).getX() && y == player->getElement(i).getY()) {
+                MacUILib_printf("%c", player->getElement(i).getSymbol());
+                isSnake = true;
+                break;
+                }
             }
+            if (isSnake) continue;
             if (x == snakeFood -> getFoodPos().pos -> x && y == snakeFood -> getFoodPos().pos -> y)
                 {
                     MacUILib_printf("@");
