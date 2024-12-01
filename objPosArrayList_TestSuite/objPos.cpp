@@ -22,6 +22,7 @@ objPos::objPos(int xPos, int yPos, char sym)
 // First special member function is the destructor.
 objPos::~objPos(){
     delete pos; //Deallocates the memory from the heap
+    pos = nullptr;
 }
 
 //Next special function is the copy constructor

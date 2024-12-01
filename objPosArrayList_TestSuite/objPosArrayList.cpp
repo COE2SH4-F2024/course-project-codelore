@@ -13,6 +13,7 @@ objPosArrayList::objPosArrayList()
 objPosArrayList::~objPosArrayList()
 {
     delete[] aList;
+    aList = nullptr;
 }
 
 int objPosArrayList::getSize() const

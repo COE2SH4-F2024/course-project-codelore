@@ -12,4 +12,4 @@ Member 1 MacID: patem221
 Member 1 StudentID: 400508321
 
 Member 2 MacID: baggad1
-Member 2 StudentID: 400 
+Member 2 StudentID: 400512872

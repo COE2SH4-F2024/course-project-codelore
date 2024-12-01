@@ -30,7 +30,9 @@ class Player
         int playY();
 
     private:
-        objPos playerPos; // Upgrade this in iteration 3.    <-- Will change this   
+        //objPos playerPos; // Upgrade this in iteration 3.    <-- Will change this   
+        objPosArrayList* playerPosList;
+        
         enum Dir myDir;
 
         // Need a reference to the Main Game Mechanisms

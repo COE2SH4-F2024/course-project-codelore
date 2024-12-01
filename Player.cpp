@@ -8,12 +8,15 @@ Player::Player(GameMechs* thisGMRef)
     myDir = STOP;
 
     // more actions to be included
-    playerPos = objPos(15, 7, '*');         //<-- Will change this 
+    playerPosList = new objPosArrayList;
+    playerPosList -> insertHead(objPos(15, 7, '*'));         //<-- Will change this 
 }
 
 
 Player::~Player()
 {
+    delete playerPosList;
+    playerPosList = nullptr;
     // delete any heap members here         <-- Will change this 
 }
 
@@ -87,30 +90,32 @@ void Player::updatePlayerDir()
 void Player::movePlayer()
 {
     // PPA3 Finite State Machine logic
-    int xPos, yPos, len, wid;
+    int xPos, yPos, len, wid, symbol;
     len = mainGameMechsRef -> getBoardSizeY();
     wid = mainGameMechsRef -> getBoardSizeX();
-    xPos = playerPos.getX();
-    yPos = playerPos.getY();
+
+    symbol = playerPosList -> getHeadElement().getSymbol();
+    xPos = playerPosList -> getHeadElement().getX(); //I3
+    yPos = playerPosList -> getHeadElement().getY(); //I3
 
     switch (myDir){
         case STOP:
             return;
         
         case UP:
-            playerPos.changeY(-1);
+            yPos--;
             break;
         
         case DOWN:
-            playerPos.changeY(1);
+            yPos++;
             break;
 
         case LEFT:
-            playerPos.changeX(-1);
+            xPos--;
             break;
         
         case RIGHT:
-            playerPos.changeX(1);
+            xPos++;
             break;
         
         default:
@@ -120,21 +125,27 @@ void Player::movePlayer()
 
     if (yPos < 1){
         //player.y = bHEIGHT - 2;
-        playerPos.setY(len - 2);
+        //playerPosList -> setY(len - 2);
+        yPos = len-2;
     }
     else if (yPos > (len - 2))
     {
         //player.y = 1;
-        playerPos.setY(1);
+        //playerPosList -> setY(1);
+        yPos = 1;
     }
     else if (xPos < 1){
         //player.x = bWIDTH - 2;
-        playerPos.setX(wid - 2);
+        //playerPosList -> setX(wid - 2);
+        xPos = wid-2;
     }
     else if (xPos > (wid - 2)){
         //player.x = 1;
-        playerPos.setX(1);
+        //playerPosList -> setX(1);
+        xPos = 1;
     }
+    playerPosList -> insertHead(objPos(xPos, yPos, symbol));
+    playerPosList -> removeTail();
 }
 
 // More methods to be added
@@ -163,9 +174,9 @@ char Player::getDirection() {
 
 //Getter Method for X and Y
 int Player:: playX(){
-    return playerPos.getX();
+    return playerPosList -> getHeadElement().getX();
 }
 
 int Player:: playY() {
-    return playerPos.getY();
+    return playerPosList -> getHeadElement().getY();
 }
