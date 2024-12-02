@@ -101,6 +101,7 @@ void Player::movePlayer()
     int len, wid;
     len = mainGameMechsRef -> getBoardSizeY();
     wid = mainGameMechsRef -> getBoardSizeX();
+    objPos foodTemp = foodRef->getFoodPos();
 
     //objPos temp = playerPosList -> getHeadElement();
     // symbol = temp.getSymbol();
@@ -154,12 +155,10 @@ void Player::movePlayer()
         temp.setX(1);
     }
     playerPosList -> insertHead(temp);
-    playerPosList -> removeTail();
-    
     // playerPosList -> removeTail();
-    // if (!checkFoodConsumption()){
-    //     playerPosList -> removeTail();
-    // }
+    if (!checkFoodConsumption()){
+        playerPosList -> removeTail();
+    }
 }
 
 // More methods to be added
@@ -187,13 +186,16 @@ char Player::getDirection() {
 }
 
 bool Player::checkFoodConsumption(){
-    objPos temp = playerPosList -> getHeadElement();
-    objPos foodTemp = foodRef -> getFoodPos();
-    if (foodTemp.isPosEqual(&temp)){
+    objPos foodTemp = foodRef->getFoodPos();
+    if (temp.isPosEqual(&foodTemp)) {
         return true;
     }
     return false;
-
+    // objPos foodTemp = foodRef -> getFoodPos();
+    // if (temp.isPosEqual(&foodTemp)){
+    //     return true;
+    // }
+    // return false;
 }
 
 void Player::increasePlayerLength(){

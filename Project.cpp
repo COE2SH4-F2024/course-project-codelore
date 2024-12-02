@@ -54,8 +54,8 @@ void Initialize(void)
 
     exitFlag = false;
     game = new GameMechs();
-    snake = new Player(game, snakeFood);
     snakeFood = new Food(game);
+    snake = new Player(game, snakeFood);
     snakeFood -> generateFood(snake->getPlayerPos());
     //symbolTest = new objPos(15, 7, '*');
 
@@ -96,8 +96,8 @@ void DrawScreen(void)
     char playerSymbol, directionChar;
     length = game -> getBoardSizeY();
     width = game -> getBoardSizeX();
-    playerX = snake -> playX();
-    playerY = snake -> playY();
+    // playerX = snake -> playX();
+    // playerY = snake -> playY();
     
     bool isSnake = false;
     objPosArrayList* player = snake -> getPlayerPos();
