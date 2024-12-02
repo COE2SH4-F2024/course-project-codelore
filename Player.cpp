@@ -10,6 +10,10 @@ Player::Player(GameMechs* thisGMRef)
     // more actions to be included
     playerPosList = new objPosArrayList;
     playerPosList -> insertHead(objPos(15, 7, '*'));         //<-- Will change this
+    playerPosList -> insertHead(objPos(16, 7, '*'));
+    playerPosList -> insertHead(objPos(17, 7, '*'));
+    playerPosList -> insertHead(objPos(18, 7, '*'));
+    playerPosList -> insertHead(objPos(19, 7, '*'));
 }
 
 
