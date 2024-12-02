@@ -15,6 +15,8 @@ Player::Player(GameMechs* thisGMRef, Food* thisFoodRef)
     // playerPosList -> insertHead(objPos(17, 7, '*'));
     // playerPosList -> insertHead(objPos(18, 7, '*'));
     // playerPosList -> insertHead(objPos(19, 7, '*'));
+
+    temp = playerPosList -> getHeadElement();
 }
 
 
@@ -100,7 +102,7 @@ void Player::movePlayer()
     len = mainGameMechsRef -> getBoardSizeY();
     wid = mainGameMechsRef -> getBoardSizeX();
 
-    objPos temp = playerPosList -> getHeadElement();
+    //objPos temp = playerPosList -> getHeadElement();
     // symbol = temp.getSymbol();
     // xPos = temp.getX(); //I3
     // yPos = temp.getY(); //I3
