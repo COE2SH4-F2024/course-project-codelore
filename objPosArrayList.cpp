@@ -28,7 +28,7 @@ void objPosArrayList::insertHead(objPos thisPos)
     if (listSize < arrayCapacity){
         listSize++;
 
-        for(i=listSize; i > 0; i--){
+        for(i=listSize -1; i > 0; i--){
             aList[i] = aList[i-1];
         }
         
@@ -69,16 +69,12 @@ void objPosArrayList::removeTail()
 
 objPos objPosArrayList::getHeadElement() const
 {
-    if (listSize > 0){
-        return aList[0];
-    }
+    return aList[0];
 }
 
 objPos objPosArrayList::getTailElement() const
 {
-    if (listSize > 0){
-        return aList[(listSize-1)];
-    }
+    return aList[(listSize-1)];
 }
 
 objPos objPosArrayList::getElement(int index) const

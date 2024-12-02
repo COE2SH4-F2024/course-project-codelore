@@ -2,18 +2,19 @@
 #include "GameMechs.h"
 
 
-Player::Player(GameMechs* thisGMRef)
+Player::Player(GameMechs* thisGMRef, Food* thisFoodRef)
 {
     mainGameMechsRef = thisGMRef;
+    foodRef = thisFoodRef;
     myDir = STOP;
 
     // more actions to be included
     playerPosList = new objPosArrayList;
     playerPosList -> insertHead(objPos(15, 7, '*'));         //<-- Will change this
-    playerPosList -> insertHead(objPos(16, 7, '*'));
-    playerPosList -> insertHead(objPos(17, 7, '*'));
-    playerPosList -> insertHead(objPos(18, 7, '*'));
-    playerPosList -> insertHead(objPos(19, 7, '*'));
+    // playerPosList -> insertHead(objPos(16, 7, '*'));
+    // playerPosList -> insertHead(objPos(17, 7, '*'));
+    // playerPosList -> insertHead(objPos(18, 7, '*'));
+    // playerPosList -> insertHead(objPos(19, 7, '*'));
 }
 
 
@@ -152,6 +153,11 @@ void Player::movePlayer()
     }
     playerPosList -> insertHead(temp);
     playerPosList -> removeTail();
+    
+    // playerPosList -> removeTail();
+    // if (!checkFoodConsumption()){
+    //     playerPosList -> removeTail();
+    // }
 }
 
 // More methods to be added
@@ -176,6 +182,20 @@ char Player::getDirection() {
         default:
             return 'F';
     }
+}
+
+bool Player::checkFoodConsumption(){
+    objPos temp = playerPosList -> getHeadElement();
+    objPos foodTemp = foodRef -> getFoodPos();
+    if (foodTemp.isPosEqual(&temp)){
+        return true;
+    }
+    return false;
+
+}
+
+void Player::increasePlayerLength(){
+
 }
 
 //Getter Method for X and Y
