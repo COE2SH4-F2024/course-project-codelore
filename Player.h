@@ -29,6 +29,9 @@ class Player
         int playX();
         int playY();
 
+        bool checkFoodConsumption();
+        void increasePlayerLength();
+
     private:
         //objPos playerPos; // Upgrade this in iteration 3.    <-- Will change this   
         objPosArrayList* playerPosList;

@@ -9,11 +9,7 @@ Player::Player(GameMechs* thisGMRef)
 
     // more actions to be included
     playerPosList = new objPosArrayList;
-    playerPosList -> insertHead(objPos(15, 7, '*'));         //<-- Will change this 
-    playerPosList -> insertHead(objPos(16, 7, '*'));
-    playerPosList -> insertHead(objPos(17, 7, '*'));
-    playerPosList -> insertHead(objPos(18, 7, '*'));
-    playerPosList -> insertHead(objPos(19, 7, '*'));
+    playerPosList -> insertHead(objPos(15, 7, '*'));         //<-- Will change this
 }
 
 
@@ -21,18 +17,18 @@ Player::~Player()
 {
     delete playerPosList;
     playerPosList = nullptr;
-    // delete any heap members here         <-- Will change this 
+    // delete any heap members here         <-- Will change this
 }
 
 objPosArrayList* Player::getPlayerPos() const
 {
     return playerPosList;
-    // return the reference to the playerPos array list <-- Will change this 
+    // return the reference to the playerPos array list <-- Will change this
 }
 
 void Player::updatePlayerDir()
 {
-    // PPA3 input processing logic     
+    // PPA3 input processing logic
     char input;
     input = mainGameMechsRef -> getInput();
 
