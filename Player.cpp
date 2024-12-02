@@ -16,7 +16,7 @@ Player::Player(GameMechs* thisGMRef, Food* thisFoodRef)
     // playerPosList -> insertHead(objPos(18, 7, '*'));
     // playerPosList -> insertHead(objPos(19, 7, '*'));
 
-    temp = playerPosList -> getHeadElement();
+    head = playerPosList -> getHeadElement();
 }
 
 
@@ -103,29 +103,29 @@ void Player::movePlayer()
     wid = mainGameMechsRef -> getBoardSizeX();
     objPos foodTemp = foodRef->getFoodPos();
 
-    //objPos temp = playerPosList -> getHeadElement();
-    // symbol = temp.getSymbol();
-    // xPos = temp.getX(); //I3
-    // yPos = temp.getY(); //I3
+    //objPos head = playerPosList -> getHeadElement();
+    // symbol = head.getSymbol();
+    // xPos = head.getX(); //I3
+    // yPos = head.getY(); //I3
 
     switch (myDir){
         case STOP:
             return;
         
         case UP:
-            temp.changeY(-1); //changed to be more modular
+            head.changeY(-1); //changed to be more modular
             break;
         
         case DOWN:
-            temp.changeY(1);
+            head.changeY(1);
             break;
 
         case LEFT:
-            temp.changeX(-1);
+            head.changeX(-1);
             break;
         
         case RIGHT:
-            temp.changeX(1);
+            head.changeX(1);
             break;
         
         default:
@@ -133,28 +133,28 @@ void Player::movePlayer()
 
     }
 
-    if (temp.getY() < 1){
+    if (head.getY() < 1){
         //player.y = bHEIGHT - 2;
         //playerPosList -> setY(len - 2);
-        temp.setY(len-2);
+        head.setY(len-2);
     }
-    else if (temp.getY() > (len - 2))
+    else if (head.getY() > (len - 2))
     {
         //player.y = 1;
         //playerPosList -> setY(1);
-        temp.setY(1);
+        head.setY(1);
     }
-    else if (temp.getX() < 1){
+    else if (head.getX() < 1){
         //player.x = bWIDTH - 2;
         //playerPosList -> setX(wid - 2);
-        temp.setX(wid-2);
+        head.setX(wid-2);
     }
-    else if (temp.getX() > (wid - 2)){
+    else if (head.getX() > (wid - 2)){
         //player.x = 1;
         //playerPosList -> setX(1);
-        temp.setX(1);
+        head.setX(1);
     }
-    playerPosList -> insertHead(temp);
+    playerPosList -> insertHead(head);
     // playerPosList -> removeTail();
     if (!checkFoodConsumption()){
         playerPosList -> removeTail();
@@ -187,15 +187,29 @@ char Player::getDirection() {
 
 bool Player::checkFoodConsumption(){
     objPos foodTemp = foodRef->getFoodPos();
-    if (temp.isPosEqual(&foodTemp)) {
+    if (head.isPosEqual(&foodTemp)) {
+        foodRef -> generateFood(getPlayerPos());
+        mainGameMechsRef -> incrementScore();
         return true;
     }
     return false;
     // objPos foodTemp = foodRef -> getFoodPos();
-    // if (temp.isPosEqual(&foodTemp)){
+    // if (head.isPosEqual(&foodTemp)){
     //     return true;
     // }
     // return false;
+}
+
+bool Player::checkSelfCollision(){
+    int i, size;
+    playerPosList->getSize();
+    for (i = 1; i < size; i++){
+        if (head.getX() == playerPosList->getElement(i).getX() && head.getY() == playerPosList->getElement(i).getY())  //<-- when you finish objPosArrayList, change this method
+        {
+            mainGameMechsRef -> setLoseFlag();
+            break;
+        }
+    }
 }
 
 void Player::increasePlayerLength(){

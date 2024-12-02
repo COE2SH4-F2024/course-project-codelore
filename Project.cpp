@@ -74,11 +74,8 @@ void RunLogic(void)
 {
     snake -> updatePlayerDir();
     snake -> movePlayer();
+    snake -> checkSelfCollision();
     game -> clearInput();
-    // if (snake -> checkFoodConsumption()){
-    //     //snakeFood -> generateFood(snake->getPlayerPos());
-    //     // game -> incrementScore();
-    // }
 
     //For Testing
     // if ((game -> getScore()) > 10){

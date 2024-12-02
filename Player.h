@@ -33,19 +33,19 @@ class Player
         int playY();
 
         bool checkFoodConsumption();
+        bool checkSelfCollision();
         void increasePlayerLength();
 
     private:
         //objPos playerPos; // Upgrade this in iteration 3.    <-- Will change this   
         objPosArrayList* playerPosList;
+        objPos head;
         
         enum Dir myDir;
 
         // Need a reference to the Main Game Mechanisms
         GameMechs* mainGameMechsRef;
         Food* foodRef;
-
-        objPos temp;
 };
 
 #endif
