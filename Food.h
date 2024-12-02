@@ -19,6 +19,7 @@ class Food
         ~Food();
 
         void generateFood(objPosArrayList* blockOff);
+        void generateBonusFood(objPosArrayList* blockOff);
         objPos getFoodPos() const;
 
 

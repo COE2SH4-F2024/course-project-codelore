@@ -37,6 +37,12 @@ void Food::generateFood(objPosArrayList* blockOff)
     foodPos.pos -> y = randomY;
 
 }
+void Food::generateBonusFood(objPosArrayList* blockoff){
+    // int i;
+    // for(i=0; i < 5; i++){
+    //     generateFood(blockoff);
+    // }
+}
 
 objPos Food::getFoodPos() const
 {

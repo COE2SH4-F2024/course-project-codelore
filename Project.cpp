@@ -56,7 +56,9 @@ void Initialize(void)
     game = new GameMechs();
     snakeFood = new Food(game);
     snake = new Player(game, snakeFood);
+
     snakeFood -> generateFood(snake->getPlayerPos());
+    //snakeFood -> generateBonusFood(snake->getPlayerPos());
     //symbolTest = new objPos(15, 7, '*');
 
 }
@@ -78,9 +80,9 @@ void RunLogic(void)
     game -> clearInput();
 
     //For Testing
-    // if ((game -> getScore()) > 10){
-    //     game -> setExitTrue();
-    // }
+    if ((game -> getScore()) == 69){
+        game -> setExitTrue();
+    }
 
     // For Iteration 2B check
     //snakeFood -> generateFood(snake->getPlayerPos());
